@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Regex Builder</title>
+
+	<style>
+		textarea {
+			margin-top: 50px;
+			font-family: Monaco, Andale Mono, Courier New, Courier, mono, serif;
+		}
+
+		.filler {
+			display: none;
+		}
+
+		.addmore a {
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Lost My Name Regex Builder</h1>
+
+	<form>
+		<p>
+			<label>Match full domain? <input type="checkbox" id="fulldomain"></label>
+			<label>Include localhost? <input type="checkbox" id="localhost"></label>
+		</p>
+		<p><label>Match locale? <input type="checkbox" checked id="locale"></label></p>
+		<p>
+			<label>Path: <input id="path"></label>
+			<label>(don't escape string: <input type="checkbox" id="noescape">)</label>
+		</p>
+
+		<p>Query (<code>?name=callum</code>) should contain:</p>
+
+		<ul id="query">
+			<li><input class="key">=<input class="value"></li>
+			<li class="filler"><input class="key">=<input class="value"></li>
+			<li class="addmore"><a href>+</a></li>
+		</ul>
+
+		<p>
+			<strong>Flags:</strong>
+			<label>Case sensitive: <input type="checkbox" id="flag-i"></label>
+			<label>Global: <input type="checkbox" id="flag-g" checked></label>
+			<label>Multi-line: <input type="checkbox" id="flag-m"></label>
+		</p>
+	</form>
+
+	<textarea id="output" cols="100" rows="6"></textarea>
+
+	<script src="script.js"></script>
+</body>
+</html>
