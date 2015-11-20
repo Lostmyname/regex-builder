@@ -17,10 +17,18 @@ function escapeForRegex(string) {
 	return string.replace(/([\/\[\].\\])/g, '\\$1');
 }
 
-function getDomain(includeLocalhost) {
-	const lmn = 'https?:\\/\\/www\\.lostmy\\.name';
-	const local = 'https?:\\/\\/localhost(?::\\d{1,5})?';
-	return includeLocalhost ? `(?:${lmn}|${local})` : lmn;
+function getDomain(includeLocalhost, includeStaging) {
+	const hosts = ['https?:\\/\\/www\\.lostmy\\.name'];
+
+	if (includeLocalhost) {
+		hosts.push('https?:\\/\\/localhost(?::\\d{1,5})?');
+	}
+
+	if (includeStaging) {
+		hosts.push('https?:\\/\\/lmn\\-eagle\\-staging\\-pr\\-\\d+\\.herokuapp\\.com');
+	}
+
+	return hosts.length === 1 ? hosts[0] : `(?:${hosts.join('|')})`;
 }
 
 function insertBefore(el, before) {
@@ -56,7 +64,7 @@ function generateExpression() {
 
 	// Handle https://www.lostmy.name
 	if ($('#fulldomain').checked) {
-		output += '^' + getDomain($('#localhost').checked);
+		output += '^' + getDomain($('#localhost').checked, $('#staging').checked);
 	}
 
 	const path = $('#path').value;
