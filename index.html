@@ -30,14 +30,14 @@
 		</p>
 		<p><label>Match locale? <input type="checkbox" checked id="locale"></label></p>
 		<p>
-			<label>Path: <input id="path"></label>
+			<label>Path: <input id="path" placeholder="/books/lostmyname"></label>
 			<label>(don't escape string: <input type="checkbox" id="noescape">)</label>
 		</p>
 
 		<p>Query (<code>?name=callum</code>) should contain:</p>
 
 		<ul id="query">
-			<li><input class="key">=<input class="value"></li>
+			<li><input class="key" placeholder="gender">=<input class="value" placeholder="boy"></li>
 			<li class="filler"><input class="key">=<input class="value"></li>
 			<li class="addmore"><a href>+</a></li>
 		</ul>
@@ -50,7 +50,7 @@
 		</p>
 	</form>
 
-	<textarea id="output" cols="100" rows="6"></textarea>
+	<textarea id="output" cols="100" rows="6">Your generated regex will appear here…</textarea>
 
 	<script src="script.js"></script>
 </body>
